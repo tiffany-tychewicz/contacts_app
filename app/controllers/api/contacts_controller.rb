@@ -1,7 +1,7 @@
 class Api::ContactsController < ApplicationController
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.current_user
     
     if params[:search]
       @contacts = @contacts.where("first_name ILIKE ?", "%#{params[:search]}%")
